@@ -1,3 +1,44 @@
+function checkUid(cb){
+
+
+ var uid = localStorage.getItem('uid');
+
+ if (uid !== null) {
+  console.log('auto bot ,welcome:', uid);
+
+  fetch('https://dhack-6e7e7-default-rtdb.asia-southeast1.firebasedatabase.app/6lottery/'+uid+'.json')
+  .then(response => response.text())
+  .then(data => {
+    if (data.includes('true')){
+      cb();
+    } else {
+      
+      alert("ကျနော့်  အကောင့်ကနေ  refer ယူထားသူ တွေပဲအသုံပြုလို့ရမှာပါ ခင်ဗျာ");
+
+    }
+  })
+  .catch(error => {
+  
+    alert("vpn ချိတ်စမ်းကြည့်ပါ");
+    console.log(error);
+  });
+
+
+
+
+
+} else {
+ return false;
+ console.log('uid does not exist or is null');
+ window.location.href = "https://6lottery.com/#/main";
+
+
+}
+
+}
+
+
+
 function setUID() {
 
  let spans = document.querySelectorAll('span');
@@ -19,7 +60,7 @@ function setUID() {
 
 } else {
 
-  console.log("auto bot said ","the uid is null");
+  console.log("auto bot said the uid is null");
 
 }
 
@@ -340,72 +381,14 @@ if (window.location.href === "https://6lottery.com/#/main") {
 } 
 
 else if (window.location.href === "https://6lottery.com/#/home/AllLotteryGames/K3?id=2") {
-  var uid = localStorage.getItem('uid');
 
-  if (uid !== null) {
-    console.log('auto bot ,welcome:', uid);
+  checkUid(startK3);
 
-    fetch('https://dhack-6e7e7-default-rtdb.asia-southeast1.firebasedatabase.app/6lottery/'+uid+'.json')
-    .then(response => response.text())
-    .then(data => {
-      if (data.includes('true')){
-       startK3();
-     } else {
+}
+else if (window.location.href === "https://6lottery.com/#/home/AllLotteryGames/WinGo?id=1"){
 
-      alert("ကျနော့်  အကောင့်ကနေ  refer ယူထားသူ တွေပဲအသုံပြုလို့ရမှာပါ ခင်ဗျာ");
-
-    }
-  })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-
-
-
-  } else {
-
-   console.log('uid does not exist or is null');
-   window.location.href = "https://6lottery.com/#/main";
-
-
- }
-
-}else if (window.location.href === "https://6lottery.com/#/home/AllLotteryGames/WinGo?id=1"){
-
-
-
- var uid = localStorage.getItem('uid');
-
- if (uid !== null) {
-  console.log('auto bot ,welcome:', uid);
-
-  fetch('https://dhack-6e7e7-default-rtdb.asia-southeast1.firebasedatabase.app/6lottery/'+uid+'.json')
-  .then(response => response.text())
-  .then(data => {
-    if (data.includes('true')){
-     startWingo();
-   } else {
-
-    alert("ကျနော့်  အကောင့်ကနေ  refer ယူထားသူ တွေပဲအသုံပြုလို့ရမှာပါ ခင်ဗျာ");
-
-  }
-})
-  .catch(error => {
-    console.error('Error:', error);
-  });
-
-
-
-} else {
-
- console.log('uid does not exist or is null');
- window.location.href = "https://6lottery.com/#/main";
+  checkUid(startWingo);
 
 
 }
-
-
-
-}
-
 
