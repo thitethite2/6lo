@@ -54,7 +54,7 @@ function setUID() {
  if (uidElement !== null) {
   let valueElement = uidElement.nextElementSibling.nextElementSibling;
   let value = valueElement.textContent;
-  console.log({'uid':value});
+  console.log(JSON.stringify({'uid':value}));
 
   localStorage.setItem('uid', value);
 
@@ -96,7 +96,7 @@ function startWingo(){
  //win go edited
     let bl_ele = document.getElementsByClassName('Wallet__C-balance-l1')[0].textContent;
     let numericValue = Math.floor(parseFloat(bl_ele.replace(/[^\d.-]/g, "").replace(/,/g, "")));
-    console.log({'budget':numericValue});
+    console.log(JSON.stringify({'budget':numericValue}));
 
 
     let target = e === "s" ? "သေး" : "အကြီး";
@@ -124,7 +124,7 @@ function startWingo(){
   BettingAssistant.prototype.doBet = async function () {
     await this.sleep(6000);
     this.win = this.checkWin(this.to, this.type);
-    console.log({'budget':document.getElementsByClassName});
+    console.log(JSON.stringify({'budget':document.getElementsByClassName}));
     if (this.win) {
       this.current_lose_limit = 1;
       console.log("win", 100 * this.amount);
@@ -140,7 +140,7 @@ function startWingo(){
 
      }
    }
-   console.log({"lose":this.current_lose_limit});
+   console.log(JSON.stringify({"lose":this.current_lose_limit}));
    this.setBetLogic(this.win);
    this.actionBet(this.to, this.amount);
    
@@ -187,7 +187,7 @@ BettingAssistant.prototype.sleep = function (e) {
 BettingAssistant.prototype.setBetLogic = function (e) {
   let t = this.estimateNextResult(this.history);
 
-  t === "အကြီး" ? (this.to = "b", console.log({"bet_amount": "အကြီး" + this.amount * 100})) : (this.to = "s", console.log({"bet_amount": "သေး" + this.amount * 100}));
+  t === "အကြီး" ? (this.to = "b", console.log(JSON.stringify({"bet_amount": "အကြီး" + this.amount * 100}))) : (this.to = "s", console.log(JSON.stringify({"bet_amount": "သေး" + this.amount * 100})));
 
 };
 
@@ -247,7 +247,7 @@ function startK3() {
 
     let bl_ele = document.getElementsByClassName('Wallet__C-balance-l1')[0].textContent;
     let numericValue = Math.floor(parseFloat(bl_ele.replace(/[^\d.-]/g, "").replace(/,/g, "")));
-    console.log({'budget':numericValue});
+    console.log(JSON.stringify({'budget':numericValue}));
 
 
     let target = e === "e" ? "မ" : "စုံ";
@@ -290,7 +290,7 @@ function startK3() {
 
      }
    }
-   console.log({"lose":this.current_lose_limit});
+   console.log(JSON.stringify({"lose":this.current_lose_limit}));
    this.setBetLogic(this.win);
    this.actionBet(this.to, this.amount);
    
@@ -329,7 +329,7 @@ BettingAssistant.prototype.sleep = function (e) {
 BettingAssistant.prototype.setBetLogic = function (e) {
   let t = this.estimateNextResult(this.history);
 
-  t === "စုံ" ? (this.to = "o", console.log({"bet_amount": "စုံ " + this.amount * 10})) : (this.to = "e", console.log({"bet_amount": "မ " + this.amount * 10}));
+  t === "စုံ" ? (this.to = "o", console.log(JSON.stringify({"bet_amount": "စုံ " + this.amount * 10}))) : (this.to = "e", console.log(JSON.stringify({"bet_amount": "မ " + this.amount * 10})));
 
 };
 
