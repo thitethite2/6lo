@@ -30,7 +30,7 @@ function checkUid(cb){
 } else {
  return false;
  console.log('uid does not exist or is null');
- window.location.href = "https://6lottery.com/#/main";
+ window.location.href = "https://6lottery.com/#/main?check_uid=true";
 
 
 }
@@ -41,29 +41,38 @@ function checkUid(cb){
 
 function setUID() {
 
- let spans = document.querySelectorAll('span');
+  document.getElementsByTagName("h3")[2].innerHTML = "အောက်က uid ကို copy နိပ်ပါ";
 
- let uidElement = null;
 
- spans.forEach(function(span) {
-  if (span.textContent.includes('UID')) {
-    uidElement = span;
-  }
+  document.addEventListener("copy", function(event) {
+
+           let spans = document.querySelectorAll('span');
+
+           let uidElement = null;
+
+           spans.forEach(function(span) {
+            if (span.textContent.includes('UID')) {
+              uidElement = span;
+            }
+          });
+
+           if (uidElement !== null) {
+            let valueElement = uidElement.nextElementSibling.nextElementSibling;
+            let value = valueElement.textContent;
+            console.log("uid:"+value);
+
+            localStorage.setItem('uid', value);
+
+          } else {
+
+            console.log("auto bot said the uid is null");
+
+          }
+
+                  
+        // Do something with the pasted text
+       
 });
-
- if (uidElement !== null) {
-  let valueElement = uidElement.nextElementSibling.nextElementSibling;
-  let value = valueElement.textContent;
-  console.log("{'uid':"+value+"}");
-
-  localStorage.setItem('uid', value);
-
-} else {
-
-  console.log("auto bot said the uid is null");
-
-}
-
 
 }
 
@@ -86,7 +95,7 @@ function startWingo(){
     this.current_lose_limit =  1;
     this.to = "b";
     this.type = "ev";
-    this.history = ["အကြီး", "သေး"];
+    this.history = [];
           // wind go edited
     this.element = document.getElementsByClassName("TimeLeft__C-id")[0];
     this.observer = null;
@@ -96,7 +105,7 @@ function startWingo(){
  //win go edited
     let bl_ele = document.getElementsByClassName('Wallet__C-balance-l1')[0].textContent;
     let numericValue = Math.floor(parseFloat(bl_ele.replace(/[^\d.-]/g, "").replace(/,/g, "")));
-    console.log("{'budget':"+numericValue+"}");
+    console.log("budget:"+numericValue);
 
 
     let target = e === "s" ? "သေး" : "အကြီး";
@@ -140,7 +149,7 @@ function startWingo(){
 
      }
    }
-   console.log("{'lose':"+this.current_lose_limit+"}");
+   console.log("lose:"+this.current_lose_limit);
    this.setBetLogic(this.win);
    this.actionBet(this.to, this.amount);
    
@@ -185,9 +194,21 @@ BettingAssistant.prototype.sleep = function (e) {
 };
 
 BettingAssistant.prototype.setBetLogic = function (e) {
-  let t = this.estimateNextResult(this.history);
+  this.history.push(document.querySelectorAll("span[data-v-c74f4bba]")[5].textContent);
+    this.history.push(document.querySelectorAll("span[data-v-c74f4bba]")[4].textContent);
+        this.history.push(document.querySelectorAll("span[data-v-c74f4bba]")[3].textContent);
+            this.history.push(document.querySelectorAll("span[data-v-c74f4bba]")[2].textContent);
+                this.history.push(document.querySelectorAll("span[data-v-c74f4bba]")[1].textContent);
+                    this.history.push(document.querySelectorAll("span[data-v-c74f4bba]")[0].textContent);
 
-  t === "အကြီး" ? (this.to = "b", console.log("{bet_amount: အကြီး" + this.amount * 100+"}")) : (this.to = "s", console.log("{bet_amount: သေး" + this.amount * 100+"}"));
+
+
+
+
+
+  let t = this.estimateNextResult(this.history);
+  this.history = [];
+  t === "အကြီး" ? (this.to = "b", console.log("bet_amount:အကြီး" + this.amount * 100)) : (this.to = "s", console.log("bet_amount: သေး" + this.amount * 100));
 
 };
 
@@ -231,14 +252,14 @@ function startK3() {
 
     this.win = true;
     this.lastBet = "စုံ";
-    this.inital_amount = 1;
+    this.inital_amount = 80;
     this.amount = this.inital_amount;
-    this.lose_increase = 1;
-    this.lose_limit = 1;
+    this.lose_increase = 2;
+    this.lose_limit = 4;
     this.current_lose_limit =  1;
     this.to = "o";
     this.type = "ev";
-    this.history = ["စုံ", "မ"];
+    this.history = [];
     this.element = document.querySelectorAll("div[data-v-60ededf7]")[7];
     this.observer = null;
   };
@@ -247,7 +268,7 @@ function startK3() {
 
     let bl_ele = document.getElementsByClassName('Wallet__C-balance-l1')[0].textContent;
     let numericValue = Math.floor(parseFloat(bl_ele.replace(/[^\d.-]/g, "").replace(/,/g, "")));
-    console.log("{'budget':"+ numericValue+"}");
+    console.log("budget:"+ numericValue);
 
 
     let target = e === "e" ? "မ" : "စုံ";
@@ -290,7 +311,7 @@ function startK3() {
 
      }
    }
-   console.log("{'lose':"+this.current_lose_limit+"}");
+   console.log("lose:"+this.current_lose_limit);
    this.setBetLogic(this.win);
    this.actionBet(this.to, this.amount);
    
@@ -327,9 +348,24 @@ BettingAssistant.prototype.sleep = function (e) {
 };
 
 BettingAssistant.prototype.setBetLogic = function (e) {
+
+  this.history.push(document.querySelectorAll("span[data-v-f5a8bf77]")[20].textContent);
+    this.history.push(document.querySelectorAll("span[data-v-f5a8bf77]")[17].textContent);
+      this.history.push(document.querySelectorAll("span[data-v-f5a8bf77]")[14].textContent);
+        this.history.push(document.querySelectorAll("span[data-v-f5a8bf77]")[11].textContent);
+          this.history.push(document.querySelectorAll("span[data-v-f5a8bf77]")[8].textContent);
+            this.history.push(document.querySelectorAll("span[data-v-f5a8bf77]")[5].textContent);
+              this.history.push(document.querySelectorAll("span[data-v-f5a8bf77]")[2].textContent);
+
+
+
+
+
+
+
   let t = this.estimateNextResult(this.history);
 
-  t === "စုံ" ? (this.to = "o", console.log("{'bet_amount': စုံ " + this.amount * 10 +"}")) : (this.to = "e", console.log("{'bet_amount': မ" + this.amount * 10 +"}"));
+  t === "စုံ" ? (this.to = "o", console.log("bet_amount: စုံ " + this.amount * 10 )) : (this.to = "e", console.log("bet_amount: မ" + this.amount * 10 ));
 
 };
 
