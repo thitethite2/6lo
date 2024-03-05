@@ -1,6 +1,6 @@
 function checkUid(cb){
 
-alert("လော်လောဆယ် အစမ်းသုံးအနေနဲ့ Free ဖွင့်ထားပါတယ် Video အောက်မှာ user id လေးတွေမန့်ထားကြနော် ");
+alert("လော်လောဆယ် အစမ်းသုံးအနေနဲ့ Free ဖွင့်ထားပါတယ် \n youtube or Facebook Video အောက်မှာ user id လေးတွေမန့်ထားကြနော် ");
  var uid = localStorage.getItem('uid');
 
  if (uid !== null) {
