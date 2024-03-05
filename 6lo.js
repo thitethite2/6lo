@@ -408,8 +408,8 @@ assistant.startObserving();
 
 
 
-if (window.location.href === "https://6lottery.com/#/main") {
-  console.log("setting ... uid");
+if (window.location.href === "https://6lottery.com/#/main?check_uid=true") {
+  console.log("auto bot said setting ... uid");
   setUID();
 
 
