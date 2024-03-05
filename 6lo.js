@@ -252,10 +252,10 @@ function startK3() {
 
     this.win = true;
     this.lastBet = "စုံ";
-    this.inital_amount = 80;
+    this.inital_amount = 1;
     this.amount = this.inital_amount;
-    this.lose_increase = 2;
-    this.lose_limit = 4;
+    this.lose_increase = 1;
+    this.lose_limit = 1;
     this.current_lose_limit =  1;
     this.to = "o";
     this.type = "ev";
